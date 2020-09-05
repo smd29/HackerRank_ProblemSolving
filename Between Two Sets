@@ -1,0 +1,91 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'getTotalX' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER_ARRAY a
+#  2. INTEGER_ARRAY b
+#
+
+def getTotalX(a, b):
+    # Write your code here
+    max_a = max(a)
+    min_b = min(b)
+    #the numbers has to fall in between max_a and min_b
+    res_list = []
+    
+    #find gcd of b
+    if(len(b)>1):
+        gcd = find_gcd(b[0],b[1])
+        for i in range(2,len(b)): 
+            gcd=find_gcd(gcd,b[i]) 
+    else:
+        gcd = b[0]
+    #find lcm of a
+    if(len(a)>1):
+        lcm = find_lcm(a[0],a[1])
+        for i in range(2, len(a)): 
+            lcm = find_lcm(lcm, a[i])
+    else:
+        lcm = a[0]
+
+    for j in range(max_a,min_b+1):
+        if(gcd%j==0 and j not in res_list):
+            res_list.append(j)
+    # print(res_list)
+    res_list_new = []
+    # print(lcm)
+    for i in range(0,len(res_list)):
+        if(res_list[i]%lcm==0):
+            res_list_new.append(res_list[i])
+    # print(res_list_new)
+    return len(res_list_new)
+def find_gcd(x, y): 
+    while(y): 
+        x, y = y, x % y 
+  
+    return x 
+
+def find_lcm(num1, num2): 
+    if(num1>num2): 
+        num = num1 
+        den = num2 
+    else: 
+        num = num2 
+        den = num1 
+    rem = num % den 
+    while(rem != 0): 
+        num = den 
+        den = rem 
+        rem = num % den 
+    gcd = den 
+    lcm = int(int(num1 * num2)/int(gcd)) 
+    return lcm 
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    first_multiple_input = input().rstrip().split()
+
+    n = int(first_multiple_input[0])
+
+    m = int(first_multiple_input[1])
+
+    arr = list(map(int, input().rstrip().split()))
+
+    brr = list(map(int, input().rstrip().split()))
+
+    total = getTotalX(arr, brr)
+
+    fptr.write(str(total) + '\n')
+
+    fptr.close()
