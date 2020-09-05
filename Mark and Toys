@@ -1,0 +1,40 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the maximumToys function below.
+def maximumToys(prices, k):
+    affordable_price_list = []
+    for i in range(0,len(prices)):
+        #print(prices[i])
+        if(prices[i]<k):
+            affordable_price_list.append(prices[i])
+    #print(affordable_price_list)
+    affordable_price_list = sorted(affordable_price_list)
+    toys_count = 0 
+    for i in range(0,len(affordable_price_list)):
+        if(affordable_price_list[i]<k):
+            k=k-affordable_price_list[i]
+            toys_count+=1
+    return toys_count
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nk = input().split()
+
+    n = int(nk[0])
+
+    k = int(nk[1])
+
+    prices = list(map(int, input().rstrip().split()))
+
+    result = maximumToys(prices, k)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
