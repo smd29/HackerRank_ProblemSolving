@@ -1,0 +1,36 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the migratoryBirds function below.
+def migratoryBirds(arr):
+    
+    l= [0]*6 #Birds are atmost 5 types(1–5)
+    for i in arr:
+        #print("i=",i)
+        #print("arr element", arr[i])
+        #print(l[i])
+        l[i] += 1
+        #print("Post")
+        #print(l)
+        #print("iteration over")
+        k = max(l)
+        #print(k)
+    return(l.index(k))
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    arr_count = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = migratoryBirds(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
