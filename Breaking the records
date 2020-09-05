@@ -1,0 +1,38 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the breakingRecords function below.
+def breakingRecords(scores):
+    max_changed = 0 
+    min_changed = 0
+    max_score = scores[0]
+    min_score = scores[0]
+    counter = 0
+    while(counter<len(scores)):
+        if(scores[counter] > max_score):
+            max_score = scores[counter]
+            max_changed = max_changed+1
+        elif(scores[counter] < min_score):
+            min_score = scores[counter]
+            min_changed = min_changed+1
+        counter = counter+1
+    return max_changed,min_changed
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    scores = list(map(int, input().rstrip().split()))
+
+    result = breakingRecords(scores)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
