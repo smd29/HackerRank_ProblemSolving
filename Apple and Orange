@@ -1,0 +1,38 @@
+#include <assert.h>
+#include <limits.h>
+#include <math.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+    int a,b,s,t,m,n,j,i,app[100000],or[100000],count_app=0,count_or=0;
+    scanf("%d %d",&s,&t);
+    scanf("%d %d",&a,&b);
+    scanf("%d %d",&m,&n);
+    for(i=0;i<m;i++)
+        {
+        scanf("%d",&app[i]);
+        }
+    for(j=0;j<n;j++)
+    {
+        scanf("%d",&or[j]);
+    }
+     for(i=0;i<m;i++)
+        {
+            if(app[i]>=(s-a) && app[i]<=(t-a))
+                count_app+=1;
+        }printf("%d",count_app);
+    for(j=0;j<n;j++)
+        {
+            if(or[j]<=(t-b) && (s-b)<=or[j])
+                count_or+=1;
+        }
+    printf("\n%d",count_or);
+    return 0;
+}
+
