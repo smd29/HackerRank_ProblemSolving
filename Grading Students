@@ -1,0 +1,33 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+/*int* solve(int grades_size, int* grades, int *result_size){
+    // Complete this function
+    int n;
+    for(int i=0;i<n;i++)
+    {
+        if(grades[i]>38 && (grades[i]%5)>2)
+            grades[i]=(grades[i]/5)+1;
+        return grades[i];
+    }
+}
+*/
+int main() {
+    int n,grades[100]; 
+    scanf("%d", &n);
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&grades[i]);}
+     for(int i=0;i<n;i++)
+    {
+        if(grades[i]>=38 && (grades[i]%5)>2)
+            grades[i]=((grades[i]/5)+1)*5;
+        printf("%d\n",grades[i]);
+    }
+    return 0;
+}
