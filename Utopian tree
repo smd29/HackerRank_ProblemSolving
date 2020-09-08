@@ -1,0 +1,36 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the utopianTree function below.
+def utopianTree(n):
+    i = 0
+    h = 0
+    while(i<=n):
+        if(i==0):
+            h = 1
+        elif(i%2==1):
+            h = h*2
+        else:
+            h = h+1
+        i = i+1
+    return h
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input())
+
+    for t_itr in range(t):
+        n = int(input())
+
+        result = utopianTree(n)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()
