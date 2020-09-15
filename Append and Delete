@@ -1,0 +1,40 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the appendAndDelete function below.
+def appendAndDelete(s, t, k):
+    match_char = 0
+
+    for i, j in zip(s,t):
+        if(i == j):
+            match_char+=1
+        else:
+            break
+    
+    total_length = len(s) + len(t)
+
+    if(total_length <= 2*match_char + k and  total_length%2 == k%2 or total_length < k):
+        return "Yes"
+    else:
+        return "No"
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    t = input()
+
+    k = int(input())
+
+    result = appendAndDelete(s, t, k)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
